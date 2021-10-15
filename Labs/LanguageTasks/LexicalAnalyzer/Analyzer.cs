@@ -18,7 +18,7 @@ namespace LexicalAnalyzer
 		{
 			Lexemes = new List<Lexeme>();
 		}
-
+		
 		public bool Run(string text)
 		{
 			Lexemes = new List<Lexeme>();
@@ -210,7 +210,7 @@ namespace LexicalAnalyzer
 				}
 				if (isAbleToAdd)
 				{
-					AddLex(prevState, lexBufCur.ToString());
+					AddLexeme(prevState, lexBufCur.ToString());
 					lexBufCur = new StringBuilder(lexBufNext.ToString());
 					lexBufNext.Clear();
 				}
@@ -221,7 +221,7 @@ namespace LexicalAnalyzer
 
 		}
 
-		private void AddLex(State prevState, string value)
+		private void AddLexeme(State prevState, string value)
 		{
 			LexemeType lexType = LexemeType.Undefined;
 			LexemeClass lexClass = LexemeClass.Undefined;
