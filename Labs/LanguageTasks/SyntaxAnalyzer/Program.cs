@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 
 namespace SyntaxAnalyzer
@@ -9,18 +10,17 @@ namespace SyntaxAnalyzer
 		{
 			Console.InputEncoding = Encoding.Unicode;
 			Console.OutputEncoding = Encoding.Unicode;
-			Console.WriteLine("Enter code for analyser:");
-			var code = Console.ReadLine();
+			using var stream = new StreamReader("input.txt");
+			var code = stream.ReadToEnd();
 			var analyser = new SyntaxAnalyzer();
 			try
 			{
 				var result = analyser.Run(code);
-				Console.WriteLine(result ? "Okay" : "It is not a while statement");
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
 			}
-		}
+}
 	}
 }
